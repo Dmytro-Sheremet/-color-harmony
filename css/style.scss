@@ -1,0 +1,91 @@
+$hue: 60; /* 0-360 */
+$satur: 100; /* 0-100 */
+$lightness: 50; /* 0-50-100 */
+
+$lamda: 0; /* 0-360 */
+$wing: 15; /* 0-360, ... */
+$grey-wing: $wing * 2; /* 0-100 */
+
+$base-color: hsl($hue, $satur, $lightness);
+
+$base-dark: lighten($base-color, 49.9%);
+$base-dark: darken($base-color, 49.9%);
+$base-satur-up: saturate($base-color, 10);
+$base-satur-down: desaturate($base-color, 20%);
+$base-light-op-50: rgba($base-color, 0.5);
+
+$base-tint: adjust-hue($base-color, 360 * $lamda/360);
+$base-grey: desaturate($base-color, 100%);
+$base-grey-light: lighten($base-grey, 50% * $grey-wing/100);
+$base-grey-dark: darken($base-grey, 50% * $grey-wing/100);
+$base-tint-1: adjust-hue($base-color, 360 * ($lamda - 2 * $wing/360));
+$base-tint-2: adjust-hue($base-color, 360 * ($lamda - $wing/360));
+$base-tint-3: adjust-hue($base-color, 360 * ($lamda + $wing/360));
+$base-tint-4: adjust-hue($base-color, 360 * ($lamda + 2 * $wing/360));
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgb(255, 255, 255);
+}
+
+.colors {
+  margin: auto;
+  height: 100vh;
+  padding: 5px;
+  background: $base-grey-light;
+  // background: $base-color;
+  padding-top: 50px;
+  div {
+    // align-content: center;
+    h1 {
+      margin: 5px;
+      text-align: right;
+      margin-right: 20px;
+    }
+  }
+}
+
+.base {
+  background: $base-color;
+}
+.grey-light {
+  background: $base-grey-light;
+}
+.grey {
+  background: $base-grey;
+}
+.grey-dark {
+  background: $base-grey-dark;
+}
+.tint-1 {
+  background: $base-tint-1;
+}
+.tint-2 {
+  background: $base-tint-2;
+}
+.base-tint {
+  background: $base-tint;
+}
+.tint-3 {
+  background: $base-tint-3;
+}
+.tint-4 {
+  background: $base-tint-4;
+}
+
+// .header {
+//   height: 100vh;
+//   background-image: linear-gradient(to right bottom, $darken-op-50, $lighten-op-50),
+//     url(../assets/img/homescreen-background.jpg);
+//   background-size: cover;
+//   background-position: center;
+// }
